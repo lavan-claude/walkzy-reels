@@ -1,0 +1,53 @@
+{
+ "date": "2026-10-05",
+ "theme": 1,
+ "title": "3 Sekunden",
+ "status": "pending",
+ "cover": {
+  "big": "0:03",
+  "unit": "Sekunden.",
+  "sub": "So lange hat deine Webseite."
+ },
+ "slides": [
+  {
+   "kind": "stake",
+   "h": "Dann wischt dein Kunde weg.",
+   "s": "Noch bevor er weiß, was du anbietest."
+  },
+  {
+   "kind": "idea",
+   "tag": "Fehler 1",
+   "h": "Erst über die Firma reden.",
+   "s": "Dein Kunde sucht eine Antwort, keine Firmengeschichte."
+  },
+  {
+   "kind": "idea",
+   "tag": "Besser",
+   "h": "Ein Satz, was du anbietest.",
+   "s": "Was machst du, für wen, wo. Mehr nicht."
+  },
+  {
+   "kind": "idea",
+   "tag": "Darunter",
+   "h": "Ein Knopf zum Anrufen.",
+   "s": "Am Handy will keiner lange suchen."
+  },
+  {
+   "kind": "recap",
+   "h": "Zum Mitnehmen",
+   "items": [
+    "Ein Satz, was du anbietest",
+    "Ein Knopf zum Anrufen",
+    "Alles ohne Zoomen lesbar"
+   ]
+  },
+  {
+   "kind": "cta",
+   "h": "Wie sieht deine Seite aus?",
+   "s": "Kommentiere „Webseite“ für einen Check."
+  }
+ ],
+ "caption": "Deine Webseite hat nur wenige Sekunden, um zu sagen, was du anbietest.\n\nBei vielen Seiten, die ich sehe, steht erst die Firmengeschichte da. Dein Kunde will aber wissen: Was machst du, und wie erreiche ich dich?\n\nEin Satz zum Angebot und ein Knopf zum Anrufen helfen am Handy oft schon mehr als ein neues Design.\n\nSchreib WEBSEITE in die Kommentare, dann schaue ich mir deine an.",
+ "hashtags": "#walkzy #webseite #kleineunternehmen #webdesign #bremen",
+ "alt": "Neongelbes Titelbild mit der großen Zahl 0:03 und dem Text: So lange hat deine Webseite."
+}
