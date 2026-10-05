@@ -1,8 +1,66 @@
-{"date":"2026-10-05-c","theme":2,"duration":11,
- "scenes":[
-  {"t0":0,"t1":3,"big":"23:00","lines":[{"text":"Ein Kunde fragt an.","size":96,"color":"mut"}]},
-  {"t0":3,"t1":6,"lines":[{"text":"Niemand antwortet.","size":130},{"text":"Er fragt woanders.","size":130,"color":"ac"}]},
-  {"t0":6,"t1":8.8,"lines":[{"text":"Eine Auto-Antwort hält ihn.","size":120},{"text":"Bis du dich meldest.","size":120,"color":"ac"}]},
-  {"t0":8.8,"t1":11,"lines":[{"text":"Schreib AUTOMATIK","size":120},{"text":"in die Kommentare.","size":120,"color":"ac"}]}
+{
+ "date": "2026-10-05-c",
+ "theme": 2,
+ "duration": 11,
+ "scenes": [
+  {
+   "t0": 0,
+   "t1": 3,
+   "big": "23:00",
+   "lines": [
+    {
+     "text": "Ein Kunde fragt an.",
+     "size": 96,
+     "color": "mut"
+    }
+   ]
+  },
+  {
+   "t0": 3,
+   "t1": 6,
+   "lines": [
+    {
+     "text": "Niemand antwortet.",
+     "size": 130
+    },
+    {
+     "text": "Er fragt woanders.",
+     "size": 130,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 6,
+   "t1": 8.8,
+   "lines": [
+    {
+     "text": "Eine Auto-Antwort hält ihn.",
+     "size": 120
+    },
+    {
+     "text": "Bis du dich meldest.",
+     "size": 120,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 8.8,
+   "t1": 11,
+   "lines": [
+    {
+     "text": "Schreib AUTOMATIK",
+     "size": 120
+    },
+    {
+     "text": "in die Kommentare.",
+     "size": 120,
+     "color": "ac"
+    }
+   ]
+  }
  ],
- "caption":"Ein Kunde schreibt um 23 Uhr. Am nächsten Morgen hat er schon woanders gebucht.\n\nEine automatische Antwort mit den wichtigsten Infos hält ihn, bis du dich meldest. Das lässt sich für fast jeden Betrieb einrichten, auch ohne großes System.\n\nSchreib AUTOMATIK in die Kommentare, dann zeige ich dir, wie das für deinen Betrieb aussehen kann.\n\n#walkzy #automatisierung #kleineunternehmen #kundengewinnung #bremen"}
+ "caption": "Ein Kunde schreibt um 23 Uhr. Am nächsten Morgen hat er schon woanders gebucht.\n\nEine automatische Antwort mit den wichtigsten Infos hält ihn, bis du dich meldest. Das lässt sich für fast jeden Betrieb einrichten, auch ohne großes System.\n\nSchreib AUTOMATIK in die Kommentare, dann zeige ich dir, wie das für deinen Betrieb aussehen kann.\n\n#walkzy #automatisierung #kleineunternehmen #kundengewinnung #bremen",
+ "status": "superseded"
+}

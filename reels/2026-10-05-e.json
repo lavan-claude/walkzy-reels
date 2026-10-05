@@ -1,10 +1,104 @@
-{"date":"2026-10-05-e","theme":2,"duration":20,
- "scenes":[
-  {"t0":0,"t1":3.2,"big":"23:00","lines":[{"text":"Ein Kunde will einen Termin.","size":92,"color":"mut"}]},
-  {"t0":3.2,"t1":6,"lines":[{"text":"Er schreibt dir.","size":128},{"text":"Niemand antwortet.","size":128,"color":"ac"}]},
-  {"t0":6,"t1":9.4,"lines":[{"text":"Am Morgen hat er","size":92},{"text":"längst woanders gebucht.","size":92,"color":"ac"}]},
-  {"t0":9.4,"t1":13.6,"lines":[{"text":"Das muss nicht sein.","size":120},{"text":"Wir lösen das für dich.","size":112,"color":"ac"}]},
-  {"t0":13.6,"t1":16.6,"lines":[{"text":"Automatische Antwort.","size":104},{"text":"Sofort. Rund um die Uhr.","size":96,"color":"ac"}]},
-  {"t0":16.6,"t1":20,"lines":[{"text":"Schreib AUTOMATIK","size":108},{"text":"in die Kommentare.","size":108,"color":"ac"},{"text":"Wir kümmern uns drum.","size":64,"color":"mut"}]}
+{
+ "date": "2026-10-05-e",
+ "theme": 2,
+ "duration": 20,
+ "scenes": [
+  {
+   "t0": 0,
+   "t1": 3.2,
+   "big": "23:00",
+   "lines": [
+    {
+     "text": "Ein Kunde will einen Termin.",
+     "size": 92,
+     "color": "mut"
+    }
+   ]
+  },
+  {
+   "t0": 3.2,
+   "t1": 6,
+   "lines": [
+    {
+     "text": "Er schreibt dir.",
+     "size": 128
+    },
+    {
+     "text": "Niemand antwortet.",
+     "size": 128,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 6,
+   "t1": 9.4,
+   "lines": [
+    {
+     "text": "Am Morgen hat er",
+     "size": 92
+    },
+    {
+     "text": "längst woanders gebucht.",
+     "size": 92,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 9.4,
+   "t1": 13.6,
+   "lines": [
+    {
+     "text": "Das muss nicht sein.",
+     "size": 120
+    },
+    {
+     "text": "Wir lösen das für dich.",
+     "size": 112,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 13.6,
+   "t1": 16.6,
+   "lines": [
+    {
+     "text": "Automatische Antwort.",
+     "size": 104
+    },
+    {
+     "text": "Sofort. Rund um die Uhr.",
+     "size": 96,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 16.6,
+   "t1": 20,
+   "lines": [
+    {
+     "text": "Schreib AUTOMATIK",
+     "size": 108
+    },
+    {
+     "text": "in die Kommentare.",
+     "size": 108,
+     "color": "ac"
+    },
+    {
+     "text": "Wir kümmern uns drum.",
+     "size": 64,
+     "color": "mut"
+    }
+   ]
+  }
  ],
- "voiceover":"Es ist dreiundzwanzig Uhr. Ein Kunde will einen Termin. Er schreibt dir. Und niemand antwortet. Am nächsten Morgen hat er längst woanders gebucht. Das muss nicht sein. Wir bei Walkzy richten dir eine automatische Antwort ein. Sofort, rund um die Uhr. Schreib Automatik in die Kommentare, und wir lösen das für dich."}
+ "voiceover": "Es ist dreiundzwanzig Uhr. Ein Kunde will einen Termin. Er schreibt dir. Und niemand antwortet. Am nächsten Morgen hat er längst woanders gebucht. Das muss nicht sein. Wir bei Walkzy richten dir eine automatische Antwort ein. Sofort, rund um die Uhr. Schreib Automatik in die Kommentare, und wir lösen das für dich.",
+ "status": "posted",
+ "format": "reel",
+ "media_id": "18109954565583376",
+ "caption": "Schreib AUTOMATIK in die Kommentare und wir richten dir die automatische Antwort ein.\n\nEin Kunde schreibt abends um 23 Uhr und will einen Termin. Niemand antwortet, am Morgen hat er schon woanders gebucht. Das lässt sich lösen: Eine automatische Antwort meldet sich sofort, auch nachts und am Wochenende.\n\nWalkzy baut Webseiten und KI-Automatisierung für kleine Betriebe in Bremen und Umgebung.\n\n#walkzy #automatisierung #kleineunternehmen #kundengewinnung #bremen"
+}
