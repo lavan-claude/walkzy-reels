@@ -15,21 +15,22 @@ def html(d):
     return f"""<!doctype html><meta charset=utf-8><style>
 @font-face{{font-family:SG;font-weight:700;src:url('file://{FD}/space-grotesk-latin-700-normal.woff2')}}
 @font-face{{font-family:IN;font-weight:600;src:url('file://{FD}/inter-latin-600-normal.woff2')}}
-*{{margin:0;box-sizing:border-box}}body{{width:1080px;height:1920px;background:{bg};color:{ink};overflow:hidden;position:relative;font-family:IN}}
+*{{margin:0;box-sizing:border-box}}body{{width:1080px;height:1920px;background:radial-gradient(ellipse at 50% 45%,{bg} 0%,{bg} 55%,#000 130%);color:{ink};overflow:hidden;position:relative;font-family:IN}}
 .sc{{position:absolute;inset:0;padding:0 90px;display:flex;flex-direction:column;justify-content:center;opacity:0}}
 .big{{font-family:SG;font-weight:700;font-size:560px;line-height:.9;letter-spacing:-.06em;color:{ac};margin-bottom:60px;white-space:nowrap}}
 .ln{{font-family:SG;font-weight:700;line-height:1.08;letter-spacing:-.02em;margin-top:18px;opacity:0}}
 .top,.bot{{position:absolute;left:90px;right:90px;font-size:32px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:{mut};display:flex;justify-content:space-between}}
 .top{{top:110px}}.bot{{bottom:150px}}
+.sweep{{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,{ac},transparent);opacity:0}}
 .bar{{position:absolute;left:0;top:0;height:10px;background:{ac}}}
-</style><div class=top><span>Walkzy · Webseiten &amp; KI</span><span></span></div>{sc}<div class=bot><span>walkzy.de</span><span>Speichern</span></div><div class=bar id=bar></div>
+</style><div class=top><span>Walkzy · Webseiten &amp; KI</span><span></span></div>{sc}<div class=bot><span>walkzy.de</span><span>Speichern</span></div><div class=sweep id=sweep></div><div class=bar id=bar></div>
 <script>
 const E=x=>1-Math.pow(1-x,3);
 function setT(t,D){{document.getElementById('bar').style.width=(t/D*1080)+'px';
 document.querySelectorAll('.sc').forEach(s=>{{const t0=+s.dataset.t0,t1=+s.dataset.t1;const on=t>=t0&&t<t1;s.style.opacity=on?1:0;if(!on)return;
  const lt=t-t0;const big=s.querySelector('.big');if(big){{const k=E(Math.min(1,lt/0.5));big.style.transform='translateY('+(60*(1-k))+'px) scale('+(0.92+0.08*k)+')';big.style.opacity=k}}
- s.querySelectorAll('.ln').forEach((l,j)=>{{const k=E(Math.max(0,Math.min(1,(lt-0.35-j*0.45)/0.45)));l.style.opacity=k;l.style.transform='translateY('+(40*(1-k))+'px)'}});
- const out=Math.max(0,Math.min(1,(t1-t)/0.25));s.style.opacity=out;}})}}
+ s.querySelectorAll('.ln').forEach((l,j)=>{{const k=E(Math.max(0,Math.min(1,(lt-0.35-j*0.45)/0.45)));l.style.opacity=k;l.style.filter='blur('+(14*(1-k))+'px)';l.style.transform='translateY('+(50*(1-k))+'px) scale('+(1.06-0.06*k)+')'}});
+ const out=Math.max(0,Math.min(1,(t1-t)/0.3));s.style.opacity=out;s.style.transform='scale('+(1+0.05*(lt/(t1-t0)))+')';const sw=document.getElementById('sweep');if(lt<0.7){{sw.style.opacity=1-lt/0.7;sw.style.top=(300+lt/0.7*1300)+'px'}}else{{sw.style.opacity=0}}}})}}
 </script>"""
 def main(path):
     d=json.load(open(path)); D=d['duration']; fps=24; n=int(D*fps)

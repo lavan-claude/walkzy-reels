@@ -1,0 +1,80 @@
+{
+ "date": "2026-10-05-d",
+ "theme": 2,
+ "duration": 16,
+ "scenes": [
+  {
+   "t0": 0,
+   "t1": 3.2,
+   "big": "23:00",
+   "lines": [
+    {
+     "text": "Ein Kunde will einen Termin.",
+     "size": 92,
+     "color": "mut"
+    }
+   ]
+  },
+  {
+   "t0": 3.2,
+   "t1": 6,
+   "lines": [
+    {
+     "text": "Er schreibt dir.",
+     "size": 128
+    },
+    {
+     "text": "Niemand antwortet.",
+     "size": 128,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 6,
+   "t1": 9.4,
+   "lines": [
+    {
+     "text": "Am Morgen hat er",
+     "size": 92
+    },
+    {
+     "text": "längst woanders gebucht.",
+     "size": 92,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 9.4,
+   "t1": 12.6,
+   "lines": [
+    {
+     "text": "Eine Antwort.",
+     "size": 150
+    },
+    {
+     "text": "Automatisch. Sofort.",
+     "size": 120,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 12.6,
+   "t1": 16,
+   "lines": [
+    {
+     "text": "Schreib AUTOMATIK",
+     "size": 108
+    },
+    {
+     "text": "in die Kommentare.",
+     "size": 108,
+     "color": "ac"
+    }
+   ]
+  }
+ ],
+ "voiceover": "Es ist dreiundzwanzig Uhr. Ein Kunde will einen Termin. Er schreibt dir. Und niemand antwortet. Am nächsten Morgen hat er längst woanders gebucht. Dabei braucht es nur eine Antwort. Automatisch. Sofort. Schreib Automatik in die Kommentare."
+}
