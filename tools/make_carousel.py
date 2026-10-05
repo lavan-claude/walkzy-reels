@@ -26,13 +26,14 @@ def chrome(c,i,n,last):
 def cover(t,cv,n):
     c=TH[t]; big=esc(cv['big']); unit=esc(cv.get('unit','')); sub=esc(cv['sub'])
     sc=min(1,4/max(len(cv['big']),1))
+    if t==2: sc=min(1,1.1/max(len(cv['big']),1))
     h=chrome(c,1,n,False); css=f"body{{background:{c['bg']};color:{c['ink']}}}"
     if t==1:
         h+=f"<div class=big>{big}</div><div class=sub>{sub}</div>"
         css+=f".big{{position:absolute;left:20px;top:330px;font-family:'SG';font-weight:700;font-size:{int(520*sc)}px;line-height:1;letter-spacing:-.06em;white-space:nowrap}}.sub{{position:absolute;left:80px;top:900px;font-size:58px;font-weight:600;max-width:820px;line-height:1.15}}"
     elif t==2:
         h+=f"<div class=big>{big}</div><div class=txt>{unit}<small>{sub}</small></div>"
-        css+=f".big{{position:absolute;right:-90px;top:-120px;font-family:'SG';font-weight:700;font-size:{int(1300*sc)}px;line-height:1;color:{c['ac']};letter-spacing:-.05em;white-space:nowrap}}.txt{{position:absolute;left:80px;bottom:240px;font-family:'SG';font-weight:700;font-size:130px;line-height:1;letter-spacing:-.03em;max-width:900px}}small{{display:block;font-family:'IN';font-weight:600;font-size:50px;letter-spacing:0;margin-top:34px;color:#cfd6df}}"
+        css+=f".big{{position:absolute;right:{-90 if len(cv['big'])<2 else 40}px;top:{-120 if len(cv['big'])<2 else 130}px;font-family:'SG';font-weight:700;font-size:{int(1300*sc)}px;line-height:1;color:{c['ac']};letter-spacing:-.05em;white-space:nowrap}}.txt{{position:absolute;left:80px;bottom:240px;font-family:'SG';font-weight:700;font-size:130px;line-height:1;letter-spacing:-.03em;max-width:900px}}small{{display:block;font-family:'IN';font-weight:600;font-size:50px;letter-spacing:0;margin-top:34px;color:#cfd6df}}"
     elif t==3:
         h+=(f"<svg width=760 height=760 style='position:absolute;left:160px;top:230px' viewBox='0 0 760 760'><circle cx=380 cy=380 r=340 fill=none stroke='#fff4e6' stroke-width=14 opacity=.35 /><circle cx=380 cy=380 r=340 fill=none stroke='#fff4e6' stroke-width=14 stroke-dasharray='640 2137' transform='rotate(-90 380 380)' stroke-linecap=round /></svg>"
             f"<div class=big>{big}</div><div class=sub>{unit}<span>{sub}</span></div>")
@@ -53,8 +54,10 @@ def inner(t,sl,i,n):
     return h+body+"</div>",css
 def main(path):
     d=json.load(open(path)); t=int(d.get('theme',1)); n=1+len(d['slides'])
+    single=(d.get('mode')=='single')
     out=os.path.join(os.path.dirname(os.path.abspath(path)),d['date']); os.makedirs(out,exist_ok=True)
     pages=[cover(t,d['cover'],n)]+[inner(t,s,i+2,n) for i,s in enumerate(d['slides'])]
+    if single: pages[0]=(pages[0][0].replace('Wischen →','walkzy.de').replace('01/01',''),pages[0][1])
     with sync_playwright() as p:
         b=p.chromium.launch(); pg=b.new_page(viewport={"width":1080,"height":1350})
         for i,(h,css) in enumerate(pages,1):
