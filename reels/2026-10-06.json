@@ -1,0 +1,55 @@
+{
+ "date": "2026-10-06",
+ "theme": 2,
+ "title": "3 Fragen",
+ "status": "pending",
+ "format": "carousel",
+ "slot": "08:17",
+ "cover": {
+  "big": "3",
+  "unit": "Fragen jeden Tag.",
+  "sub": "Lass sie automatisch beantworten."
+ },
+ "slides": [
+  {
+   "kind": "stake",
+   "h": "Du beantwortest sie jeden Tag.",
+   "s": "Per Nachricht, am Telefon, am Wochenende."
+  },
+  {
+   "kind": "idea",
+   "tag": "Frage 1",
+   "h": "Habt ihr gerade offen?",
+   "s": "Eine feste Antwort, sofort. Auch nachts."
+  },
+  {
+   "kind": "idea",
+   "tag": "Frage 2",
+   "h": "Was kostet das ungefähr?",
+   "s": "Eine Preisspanne und ein Satz, wovon sie abhängt."
+  },
+  {
+   "kind": "idea",
+   "tag": "Frage 3",
+   "h": "Ist ein Termin frei?",
+   "s": "Ein Link oder eine Rückfrage, bis du dich meldest."
+  },
+  {
+   "kind": "recap",
+   "h": "Zum Mitnehmen",
+   "items": [
+    "Schreib die 3 Fragen auf",
+    "Formuliere je eine feste Antwort",
+    "Lass sie automatisch senden"
+   ]
+  },
+  {
+   "kind": "cta",
+   "h": "Wir richten es dir ein.",
+   "s": "Kommentiere „AUTOMATIK“ und wir melden uns."
+  }
+ ],
+ "caption": "Drei Fragen bekommst du als Betrieb jeden Tag, und du tippst jedes Mal dieselbe Antwort.\n\nÖffnungszeiten, ungefährer Preis, freier Termin. Genau diese drei lassen sich mit einer automatischen Antwort abdecken, auch abends und am Wochenende. Dein Kunde hat sofort eine Rückmeldung, du hast Ruhe.\n\nSpeicher dir das ab und schick es an jemanden, der gerade ständig am Handy hängt.\n\nSchreib AUTOMATIK in die Kommentare, dann zeigen wir dir, wie das bei deinem Betrieb aussehen kann.",
+ "hashtags": "#walkzy #automatisierung #kleineunternehmen #kundengewinnung #bremen",
+ "alt": "Schwarzes Titelbild mit der großen blauen Zahl 3 und dem Text: Fragen jeden Tag."
+}

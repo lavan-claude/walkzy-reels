@@ -1,0 +1,90 @@
+{
+ "date": "2026-10-06-c",
+ "theme": 2,
+ "duration": 18,
+ "status": "pending",
+ "format": "reel",
+ "slot": "18:17",
+ "scenes": [
+  {
+   "t0": 0,
+   "t1": 3.2,
+   "big": "3x",
+   "lines": [
+    {
+     "text": "Dieselbe Frage. Heute schon.",
+     "size": 84,
+     "color": "mut"
+    }
+   ]
+  },
+  {
+   "t0": 3.2,
+   "t1": 6.4,
+   "lines": [
+    {
+     "text": "Habt ihr offen?",
+     "size": 120
+    },
+    {
+     "text": "Was kostet das?",
+     "size": 120,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 6.4,
+   "t1": 9.2,
+   "lines": [
+    {
+     "text": "Ist ein Termin frei?",
+     "size": 112
+    },
+    {
+     "text": "Jeden Tag. Immer wieder.",
+     "size": 84,
+     "color": "mut"
+    }
+   ]
+  },
+  {
+   "t0": 9.2,
+   "t1": 13,
+   "lines": [
+    {
+     "text": "Das muss nicht sein.",
+     "size": 120
+    },
+    {
+     "text": "Wir lösen das für dich.",
+     "size": 108,
+     "color": "ac"
+    }
+   ]
+  },
+  {
+   "t0": 13,
+   "t1": 18,
+   "lines": [
+    {
+     "text": "Schreib AUTOMATIK",
+     "size": 108
+    },
+    {
+     "text": "in die Kommentare.",
+     "size": 108,
+     "color": "ac"
+    },
+    {
+     "text": "Wir kümmern uns drum.",
+     "size": 64,
+     "color": "mut"
+    }
+   ]
+  }
+ ],
+ "voiceover": "Habt ihr offen? Was kostet das? Ist ein Termin frei? Jeden Tag dieselben Fragen. Das muss nicht sein. Wir bei Walkzy richten dir eine automatische Antwort ein. Schreib Automatik in die Kommentare.",
+ "caption": "Schreib AUTOMATIK in die Kommentare und wir richten dir die automatische Antwort ein.\n\nHabt ihr offen, was kostet das, ist ein Termin frei? Dieselben Fragen kommen jeden Tag. Eine automatische Antwort übernimmt sie sofort, auch abends und am Wochenende.\n\nWalkzy baut Webseiten und KI-Automatisierung für kleine Betriebe in Bremen und Umgebung.",
+ "hashtags": "#walkzy #automatisierung #kleineunternehmen #kundengewinnung #bremen"
+}
