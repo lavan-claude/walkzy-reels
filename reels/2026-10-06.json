@@ -2,7 +2,7 @@
   "date": "2026-10-06",
   "theme": 2,
   "title": "3 Fragen",
-  "status": "approved",
+  "status": "posted",
   "format": "carousel",
   "slot": "08:17",
   "cover": {
@@ -52,5 +52,7 @@
   "caption": "Drei Fragen bekommst du als Betrieb jeden Tag, und du tippst jedes Mal dieselbe Antwort.\n\nÖffnungszeiten, ungefährer Preis, freier Termin. Genau diese drei lassen sich mit einer automatischen Antwort abdecken, auch abends und am Wochenende. Dein Kunde hat sofort eine Rückmeldung, du hast Ruhe.\n\nSpeicher dir das ab und schick es an jemanden, der gerade ständig am Handy hängt.\n\nSchreib AUTOMATIK in die Kommentare, dann zeigen wir dir, wie das bei deinem Betrieb aussehen kann.",
   "hashtags": "#walkzy #automatisierung #kleineunternehmen #kundengewinnung #bremen",
   "alt": "Schwarzes Titelbild mit der großen blauen Zahl 3 und dem Text: Fragen jeden Tag.",
-  "error": "Instagram API: \"API access blocked.\" (Code 200) beim Karussell, 2026-10-06 17:19 Berlin. Nicht erneut versucht."
+  "error": "Instagram API: \"API access blocked.\" (Code 200) beim Karussell, 2026-10-06 17:19 Berlin. Nicht erneut versucht.",
+  "posted_at": "2026-10-07T17:45:00+02:00",
+  "n8n_execution": "199"
 }
