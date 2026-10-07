@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-07-a",
+  "theme": 3,
+  "duration": 16,
+  "status": "entwurf",
+  "format": "reel",
+  "scenes": [
+    {
+      "t0": 0,
+      "t1": 1.6,
+      "lines": [
+        {
+          "text": "Kunde schreibt.",
+          "size": 96
+        }
+      ],
+      "big": "18:07"
+    },
+    {
+      "t0": 1.6,
+      "t1": 3.2,
+      "lines": [
+        {
+          "text": "Du bist schon weg.",
+          "size": 120,
+          "color": "ac"
+        }
+      ]
+    },
+    {
+      "t0": 3.2,
+      "t1": 4.8,
+      "lines": [
+        {
+          "text": "Antwort morgen?",
+          "size": 120
+        },
+        {
+          "text": "Dann ist er woanders.",
+          "size": 84,
+          "color": "mut"
+        }
+      ]
+    },
+    {
+      "t0": 4.8,
+      "t1": 6.4,
+      "lines": [
+        {
+          "text": "Das muss nicht sein.",
+          "size": 120,
+          "color": "ac"
+        }
+      ]
+    },
+    {
+      "t0": 6.4,
+      "t1": 8.4,
+      "lines": [
+        {
+          "text": "Automatische Antwort.",
+          "size": 108
+        },
+        {
+          "text": "Sofort. Nachts. Sonntags.",
+          "size": 84,
+          "color": "ac"
+        }
+      ]
+    },
+    {
+      "t0": 8.4,
+      "t1": 10.4,
+      "lines": [
+        {
+          "text": "Dein Kunde weiß:",
+          "size": 108
+        },
+        {
+          "text": "Nachricht ist da.",
+          "size": 108,
+          "color": "ac"
+        }
+      ]
+    },
+    {
+      "t0": 10.4,
+      "t1": 12.4,
+      "lines": [
+        {
+          "text": "Du hast Feierabend.",
+          "size": 120
+        },
+        {
+          "text": "Die Anfrage bleibt.",
+          "size": 108,
+          "color": "ac"
+        }
+      ]
+    },
+    {
+      "t0": 12.4,
+      "t1": 16,
+      "lines": [
+        {
+          "text": "Schreib uns eine DM.",
+          "size": 90
+        },
+        {
+          "text": "Wir richten es ein.",
+          "size": 90,
+          "color": "ac"
+        },
+        {
+          "text": "walkzy.de",
+          "size": 72,
+          "color": "mut"
+        }
+      ]
+    }
+  ]
+}
