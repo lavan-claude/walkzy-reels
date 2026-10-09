@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-09",
+  "theme": 1,
+  "title": "Webseite Check",
+  "status": "pending",
+  "format": "carousel",
+  "slot": "08:17",
+  "cover": {
+    "big": "3",
+    "sub": "Dinge muss deine Webseite sofort zeigen."
+  },
+  "slides": [
+    {
+      "kind": "stake",
+      "h": "Dein Kunde googelt zuerst.",
+      "s": "Bevor er anruft, schaut er auf deine Webseite."
+    },
+    {
+      "kind": "idea",
+      "tag": "Punkt 1",
+      "h": "Was du machst",
+      "s": "Ein klarer Satz ganz oben, ohne Fachwörter."
+    },
+    {
+      "kind": "idea",
+      "tag": "Punkt 2",
+      "h": "Wo du bist",
+      "s": "Ort, Öffnungszeiten und Anfahrt auf einen Blick."
+    },
+    {
+      "kind": "idea",
+      "tag": "Punkt 3",
+      "h": "Wie man dich erreicht",
+      "s": "Ein Button für Anruf oder Termin, gut sichtbar auch am Handy."
+    },
+    {
+      "kind": "recap",
+      "h": "Zum Mitnehmen",
+      "items": [
+        "Öffne deine Seite am Handy",
+        "Prüfe die 3 Punkte in 10 Sekunden",
+        "Fehlt einer, bessere nach"
+      ]
+    },
+    {
+      "kind": "cta",
+      "h": "Wir prüfen deine Seite kostenlos.",
+      "s": "Kommentiere „CHECK“ und wir melden uns."
+    }
+  ],
+  "caption": "Wer dich nicht kennt, googelt dich zuerst. Und entscheidet in wenigen Sekunden, ob er bleibt.\n\nDrei Dinge müssen sofort sichtbar sein: was du machst, wo du bist und wie man dich erreicht. Öffne deine Webseite einmal am Handy und prüfe es.\n\nSpeicher dir das ab und schick es an jemanden mit eigenem Betrieb.\n\nSchreib CHECK in die Kommentare, dann schauen wir uns deine Seite an.",
+  "hashtags": "#walkzy #webseite #kleineunternehmen #kundengewinnung #bremen",
+  "alt": "Gelbes Titelbild mit der großen Zahl 3 und dem Text: Dinge muss deine Webseite sofort zeigen."
+}

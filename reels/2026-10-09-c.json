@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-09-c",
+  "theme": 2,
+  "duration": 16,
+  "status": "pending",
+  "format": "reel",
+  "slot": "18:17",
+  "scenes": [
+    {"t0": 0, "t1": 3, "lines": [{"text": "Dein Kunde googelt dich.", "size": 100}, {"text": "Jetzt gerade.", "size": 84, "color": "mut"}]},
+    {"t0": 3, "t1": 6.5, "lines": [{"text": "Was machst du?", "size": 120}, {"text": "Wo bist du?", "size": 120, "color": "ac"}]},
+    {"t0": 6.5, "t1": 9.5, "lines": [{"text": "Wie erreicht man dich?", "size": 110}, {"text": "Alles in 5 Sekunden klar?", "size": 80, "color": "mut"}]},
+    {"t0": 9.5, "t1": 12.5, "lines": [{"text": "Wenn nicht,", "size": 120}, {"text": "klickt er weiter.", "size": 120, "color": "ac"}]},
+    {"t0": 12.5, "t1": 16, "lines": [{"text": "Schreib CHECK", "size": 108}, {"text": "in die Kommentare.", "size": 108, "color": "ac"}, {"text": "Wir schauen drauf.", "size": 64, "color": "mut"}]}
+  ],
+  "voiceover": "Dein Kunde googelt dich. Was machst du? Wo bist du? Wie erreicht man dich? Ist das nicht in fünf Sekunden klar, klickt er weiter. Schreib Check in die Kommentare, dann schauen wir uns deine Webseite an.",
+  "caption": "Dein Kunde googelt dich, bevor er anruft. Ist in fünf Sekunden nicht klar, was du machst, wo du bist und wie er dich erreicht, klickt er weiter.\n\nSchreib CHECK in die Kommentare und wir schauen uns deine Webseite an.\n\nWalkzy baut Webseiten und KI-Automatisierung für kleine Betriebe in Bremen und Umgebung.",
+  "hashtags": "#walkzy #webseite #kleineunternehmen #kundengewinnung #bremen"
+}
