@@ -206,6 +206,19 @@ if out.bl_idname == "NodeGroupOutput":
     ct.interface.new_socket("Image", in_out="OUTPUT", socket_type="NodeSocketColor")
 ct.links.new([o for o in mix.outputs if o.enabled][0], out.inputs[0])
 
+if "export" in sys.argv:
+    # Bildschirmposition des Schirms pro Bild (für trockenen Bereich im Regen)
+    import json
+    from bpy_extras.object_utils import world_to_camera_view
+    from mathutils import Vector
+    pos = []
+    for f in range(1, F + 1):
+        sc.frame_set(f)
+        pts = [world_to_camera_view(sc, cam, can.matrix_world @ Vector((x * 0.6, y * 0.6, 0))) for x, y in ((-1, 0), (1, 0), (0, -1), (0, 1))]
+        pos.append({"x0": min(p.x for p in pts), "x1": max(p.x for p in pts), "y": max(p.y for p in pts)})
+    json.dump(pos, open(OUT + "/schirm.json", "w"))
+    print("EXPORT OK"); sys.exit(0)
+
 frames = [int(a) for a in sys.argv if a.isdigit()]
 if "alles" in sys.argv:
     sc.render.filepath = OUT + "/f_"
