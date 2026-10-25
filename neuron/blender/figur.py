@@ -137,7 +137,7 @@ def make_figure(name, color=(0.92, 0.92, 0.92), location=(0, 0, 0)):
         ik = pb.constraints.new("IK")
         ik.target, ik.subtarget = rig, f"foot_ctrl.{s}"
         ik.pole_target, ik.pole_subtarget = rig, f"knee_pole.{s}"
-        ik.pole_angle = -1.5708
+        ik.pole_angle = 1.5708
         ik.chain_count = 2
         fb = rig.pose.bones[f"foot.{s}"]
         cr = fb.constraints.new("COPY_ROTATION")

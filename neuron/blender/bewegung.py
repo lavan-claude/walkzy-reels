@@ -37,7 +37,7 @@ def _set(pb, loc=None, rot=None, frame=None):
         pb.keyframe_insert("location", frame=frame)
 
 
-def walk(rig, f0, f1, fps=24, x0=0.0, speed=0.95, step_len=0.62, lift=0.09,
+def walk(rig, f0, f1, fps=24, x0=0.0, speed=0.95, step_len=0.62, lift=0.13, crouch=0.06,
          bob=0.035, lean=0.04, arm_swing=0.35, head_down=0.0, sway=0.025,
          arm_base=0.0, hold_arm=None, phase=0.0, stop_at=None):
     """Lässt die Figur von Bild f0 bis f1 geradeaus gehen (in Rig-Richtung).
@@ -78,7 +78,7 @@ def walk(rig, f0, f1, fps=24, x0=0.0, speed=0.95, step_len=0.62, lift=0.09,
         s = (u - (1 - swing)) / swing
         e = _smooth(s)
         y = base + 0.5 * step_len + e * 2 * step_len
-        z = lift * math.sin(math.pi * s) ** 1.2
+        z = lift * math.sin(math.pi * s ** 0.75)   # Fuß hebt früh ab, Knie beugt sich stark
         pitch = -0.55 * math.sin(math.pi * min(s * 1.6, 1)) * (1 - s) + 0.28 * _smooth((s - 0.7) / 0.3) * (1 - _smooth((s - 0.95) / 0.05))
         return y, z, pitch
 
@@ -88,7 +88,7 @@ def walk(rig, f0, f1, fps=24, x0=0.0, speed=0.95, step_len=0.62, lift=0.09,
         sp = ((f - f0) / Ts + phase)                 # Schritt-Phase
         w = math.cos(2 * math.pi * sp)               # +1 beim Aufsetzen, -1 beim Durchschwingen
         # Becken
-        pz = rest["pelvis"].z - bob * (0.5 + 0.5 * w) * moving
+        pz = rest["pelvis"].z - crouch - bob * (0.5 + 0.5 * w) * moving   # Becken etwas tiefer: Beine nie ganz gestreckt
         px = sway * math.sin(math.pi * sp) * moving
         yaw = 0.09 * math.sin(math.pi * sp) * moving
         roll = 0.04 * math.sin(math.pi * sp) * moving
