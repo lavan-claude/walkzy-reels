@@ -1,0 +1,238 @@
+<!doctype html><html lang="de"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080, height=1920"/>
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face{font-family:SG;src:url(assets/space-grotesk-latin-700-normal.woff2) format("woff2");font-weight:700}
+@font-face{font-family:IN;src:url(assets/inter-latin-600-normal.woff2) format("woff2");font-weight:600}
+@font-face{font-family:MO;src:url(assets/JetBrainsMono-Medium.ttf) format("truetype");font-weight:500}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0b0d}
+#root{width:1080px;height:1920px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#17171b 0%,#0b0b0d 70%);color:#f2f2f2;font-family:IN,sans-serif}
+.clip{position:absolute;inset:0}
+.w{position:absolute;inset:0}
+.mono{font-family:MO,monospace;letter-spacing:.22em;text-transform:uppercase}
+.lab{position:absolute;left:0;right:0;top:170px;text-align:center;font-size:44px;color:#bdbdc4}
+.lab.ac{color:#3ad6c5}
+.clock{position:absolute;left:0;right:0;top:250px;text-align:center;font-family:SG,sans-serif;font-size:150px;line-height:1;letter-spacing:-.02em}
+.clock span{position:absolute;left:0;right:0}
+.shop{position:absolute;left:150px;top:860px;width:780px;height:1170px}
+.chat{position:absolute;left:90px;right:90px;top:470px;display:flex;flex-direction:column;gap:22px}
+.b{max-width:760px;padding:26px 36px;border-radius:38px;font-size:44px;line-height:1.2;font-weight:600}
+.b.k{align-self:flex-start;background:#26262b;color:#ececf0;border-bottom-left-radius:10px}
+.b.s{align-self:flex-end;background:#f2f2f2;color:#111;border-bottom-right-radius:10px}
+.b.t{align-self:flex-end;background:#3ad6c5;color:#03201c;border-bottom-right-radius:10px}
+.meta{font-size:26px;color:#77777f;margin-top:-10px}
+.meta.r{align-self:flex-end}
+.cap{position:absolute;left:0;right:0;text-align:center;font-size:58px}
+</style></head><body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="34" data-width="1080" data-height="1920">
+
+<!-- 0: Hook -->
+<div class="clip" id="c0" data-start="0" data-duration="4.9" data-track-index="1"><div class="w">
+  <div class="clock" id="h_time" style="top:230px;font-size:230px">21:30</div>
+  <div id="h_phone" style="position:absolute;left:290px;top:560px;width:500px;height:860px;border-radius:70px;background:#0e0e11;border:6px solid #2e2e35;box-shadow:0 0 160px rgba(58,214,197,.0)">
+    <div style="position:absolute;inset:22px;border-radius:52px;background:#141418"></div>
+    <div id="h_note" style="position:absolute;left:44px;right:44px;top:170px;background:#26262b;border-radius:34px;padding:28px 30px">
+      <div class="mono" style="font-size:22px;color:#8a8a92;letter-spacing:.14em">Neue Nachricht · 21:30</div>
+      <div style="font-size:40px;line-height:1.22;margin-top:14px">Hallo! Habt ihr morgen noch einen Termin frei?</div>
+    </div>
+  </div>
+  <div class="cap mono" id="h_q" style="top:1470px;font-size:56px;color:#f2f2f2">Wer antwortet zuerst?</div>
+</div></div>
+
+<!-- 1: Links, macht alles selbst -->
+<div class="clip" id="c1" data-start="4.9" data-duration="9.6" data-track-index="1"><div class="w">
+  <div class="lab mono">Macht alles selbst</div>
+  <div class="clock" id="l_clock"></div>
+  <div class="shop" id="l_shop"></div>
+  <div class="chat">
+    <div class="b k" id="l_b1">Hallo! Habt ihr morgen noch einen Termin frei?</div>
+    <div class="meta mono" id="l_m1">21:30 · ungelesen</div>
+    <div class="b s" id="l_b2">Guten Morgen! Ja, um 10 Uhr?</div>
+    <div class="b k" id="l_b3">Danke, hab schon woanders gebucht.</div>
+  </div>
+  <div class="cap mono" id="l_cap" style="top:1180px;color:#ff7a6b;font-size:64px">Zu spät.</div>
+</div></div>
+
+<!-- 2: Rechts, hat es automatisiert -->
+<div class="clip" id="c2" data-start="14.5" data-duration="9.3" data-track-index="1"><div class="w">
+  <div class="lab mono ac">Hat es automatisiert</div>
+  <div class="clock" id="r_clock">21:30</div>
+  <div class="shop" id="r_shop"></div>
+  <div class="chat">
+    <div class="b k" id="r_b1">Hallo! Habt ihr morgen noch einen Termin frei?</div>
+    <div class="meta mono r" id="r_m1" style="color:#3ad6c5;position:relative;height:34px;width:300px;text-align:right"></div>
+    <div class="b t" id="r_b2">Ja! Morgen 10 Uhr ist frei. 35 €</div>
+    <div class="b t" id="r_b3" style="background:#0f3c37;color:#3ad6c5;border:3px solid #3ad6c5">Jetzt buchen ›</div>
+    <div class="b k" id="r_b4">Gebucht ✓ Danke!</div>
+  </div>
+  <div class="cap mono" id="r_cap" style="top:1180px;color:#3ad6c5;font-size:64px">Gebucht.</div>
+</div></div>
+
+<!-- 3: Vergleich -->
+<div class="clip" id="c3" data-start="23.8" data-duration="4.3" data-track-index="1"><div class="w">
+  <div id="v_h" style="position:absolute;left:80px;right:80px;top:250px;text-align:center;font-family:SG,sans-serif;font-size:92px;line-height:1.08;letter-spacing:-.02em">Wer zuerst antwortet, bekommt den Auftrag.</div>
+  <div id="v_sub" class="mono" style="position:absolute;left:0;right:0;top:580px;text-align:center;font-size:40px;color:#9a9aa2">Nicht wer am besten ist.</div>
+  <div id="v_l" style="position:absolute;left:40px;top:720px;width:480px;height:720px"></div>
+  <div id="v_r" style="position:absolute;left:560px;top:720px;width:480px;height:720px"></div>
+  <div id="v_lt" class="mono" style="position:absolute;left:40px;width:480px;top:1440px;text-align:center;font-size:44px;color:#ff7a6b">✕ 08:00</div>
+  <div id="v_rt" class="mono" style="position:absolute;left:560px;width:480px;top:1440px;text-align:center;font-size:44px;color:#3ad6c5">✓ 21:30</div>
+</div></div>
+
+<!-- 4: Läuft von allein -->
+<div class="clip" id="c4" data-start="28.1" data-duration="3.6" data-track-index="1"><div class="w">
+  <div id="e_t1" style="position:absolute;left:80px;right:80px;top:260px;text-align:center;font-family:SG,sans-serif;font-size:96px;line-height:1.08">Du musst nicht wach bleiben.</div>
+  <div id="e_t2" class="mono" style="position:absolute;left:0;right:0;top:520px;text-align:center;font-size:52px;color:#3ad6c5">Das läuft von allein.</div>
+  <div id="e_cnt" class="mono" style="position:absolute;left:0;right:0;top:640px;text-align:center;font-size:34px;color:#8a8a92;height:40px"></div>
+  <div class="shop" id="e_shop"></div>
+</div></div>
+
+<!-- 5: Frage -->
+<div class="clip" id="c5" data-start="31.7" data-duration="2.3" data-track-index="1"><div class="w">
+  <div id="q_t" style="position:absolute;left:90px;right:90px;top:760px;text-align:center;font-family:SG,sans-serif;font-size:112px;line-height:1.08;letter-spacing:-.02em">Antwortest du abends noch selbst?</div>
+</div></div>
+
+</div>
+<script>
+function shop(p){return `<svg viewBox="0 0 600 900" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialGradient id="${p}g"><stop offset="0" stop-color="#ffcf8a" stop-opacity=".5"/><stop offset="1" stop-color="#ffcf8a" stop-opacity="0"/></radialGradient>
+<radialGradient id="${p}pg"><stop offset="0" stop-color="#3ad6c5" stop-opacity=".6"/><stop offset="1" stop-color="#3ad6c5" stop-opacity="0"/></radialGradient>
+<linearGradient id="${p}fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141417"/><stop offset="1" stop-color="#0b0b0d"/></linearGradient>
+</defs>
+<rect x="0" y="0" width="600" height="790" fill="#121215"/>
+<rect id="${p}sky" x="70" y="120" width="170" height="230" fill="#070b16"/>
+<circle id="${p}moon" cx="200" cy="168" r="16" fill="#d9d9de"/>
+<rect x="70" y="120" width="170" height="230" fill="none" stroke="#2c2c33" stroke-width="8"/>
+<line x1="155" y1="120" x2="155" y2="350" stroke="#2c2c33" stroke-width="6"/><line x1="70" y1="235" x2="240" y2="235" stroke="#2c2c33" stroke-width="6"/>
+<g stroke="#25252a" stroke-width="6"><line x1="380" y1="210" x2="540" y2="210"/><line x1="380" y1="290" x2="540" y2="290"/><line x1="380" y1="370" x2="540" y2="370"/></g>
+<g fill="#1e1e23"><rect x="392" y="172" width="34" height="38"/><rect x="436" y="182" width="26" height="28"/><rect x="480" y="252" width="40" height="38"/><rect x="396" y="336" width="30" height="34"/><rect x="470" y="340" width="54" height="30"/></g>
+<ellipse id="${p}glow" cx="300" cy="380" rx="340" ry="330" fill="url(#${p}g)"/>
+<line x1="300" y1="0" x2="300" y2="150" stroke="#3a3a40" stroke-width="3"/>
+<path d="M238 192 A62 50 0 0 1 362 192 Z" fill="#1c1c20" stroke="#3c3c44" stroke-width="3"/>
+<ellipse id="${p}bulb" cx="300" cy="194" rx="30" ry="7" fill="#ffd9a0"/>
+<g id="${p}fig" fill="#f2f2f2">
+ <circle cx="300" cy="428" r="42"/>
+ <rect x="252" y="482" width="96" height="140" rx="44"/>
+ <path d="M264 512 Q238 556 248 600" stroke="#f2f2f2" stroke-width="24" stroke-linecap="round" fill="none"/>
+ <path d="M336 512 Q362 556 352 600" stroke="#f2f2f2" stroke-width="24" stroke-linecap="round" fill="none"/>
+</g>
+<rect x="60" y="590" width="480" height="200" fill="#19191d"/>
+<rect x="50" y="582" width="500" height="16" rx="4" fill="#2d2d33"/>
+<g id="${p}sign"><rect x="200" y="652" width="200" height="56" rx="6" fill="none" stroke="#55555c" stroke-width="3"/>
+<text x="300" y="688" text-anchor="middle" font-family="MO,monospace" font-size="22" letter-spacing="3" fill="#8a8a92">GESCHLOSSEN</text></g>
+<ellipse id="${p}pglow" cx="452" cy="540" rx="130" ry="110" fill="url(#${p}pg)"/>
+<rect x="420" y="496" width="64" height="86" rx="10" fill="#0d0d10" stroke="#4a4a52" stroke-width="3"/>
+<rect id="${p}scr" x="426" y="502" width="52" height="74" rx="6" fill="#e8e8ec"/>
+<rect x="0" y="790" width="600" height="110" fill="url(#${p}fl)"/>
+<line x1="0" y1="790" x2="600" y2="790" stroke="#2a2a2e" stroke-width="3"/>
+</svg>`}
+document.getElementById("l_shop").innerHTML=shop("l");
+document.getElementById("r_shop").innerHTML=shop("r");
+document.getElementById("v_l").innerHTML=shop("vl");
+document.getElementById("v_r").innerHTML=shop("vr");
+document.getElementById("e_shop").innerHTML=shop("e");
+
+// Zeitraffer-Uhr links
+const LT=["21:30","22:15","23:40","01:05","02:50","04:20","05:45","06:55","07:40","08:00"];
+document.getElementById("l_clock").innerHTML=LT.map((t,i)=>`<span id="lc${i}">${t}</span>`).join("");
+// 10-Sekunden-Zähler rechts
+const RT=[];for(let i=0;i<=10;i++)RT.push(i);
+document.getElementById("r_m1").innerHTML=RT.map(i=>`<span id="rc${i}" style="position:absolute;right:0">+${i} Sek.</span>`).join("");
+// Buchungszähler am Ende
+const EC=["1 Buchung","2 Buchungen","3 Buchungen"];
+document.getElementById("e_cnt").innerHTML=EC.map((t,i)=>`<span id="ec${i}" style="position:absolute;left:0;right:0">${t} · 00:4${i+1}</span>`).join("");
+
+const tl=gsap.timeline({paused:true});
+const IN=(s,t,d=0.4)=>tl.fromTo(s,{opacity:0,y:40},{opacity:1,y:0,duration:d,ease:"power3.out"},t);
+const POP=(s,t,o="left bottom")=>tl.fromTo(s,{opacity:0,scale:.8,transformOrigin:o},{opacity:1,scale:1,duration:.38,ease:"back.out(1.7)"},t);
+const SET=(s,v,t)=>tl.set(s,v,t);
+const fadeClip=(id,a,b)=>{tl.fromTo(`#${id} .w`,{opacity:0},{opacity:1,duration:.3,ease:"none"},a);tl.to(`#${id} .w`,{opacity:0,duration:.25,ease:"none"},b-.25);};
+
+// ---- 0 Hook
+tl.fromTo("#c0 .w",{opacity:1},{opacity:1,duration:.01},0);
+tl.to("#c0 .w",{opacity:0,duration:.25},4.65);
+tl.fromTo("#h_time",{opacity:0,scale:.85},{opacity:1,scale:1,duration:.45,ease:"back.out(1.6)"},0);
+tl.fromTo("#h_phone",{opacity:0,y:80},{opacity:1,y:0,duration:.5,ease:"power3.out"},0.05);
+POP("#h_note",0.55,"center top");
+tl.to("#h_phone",{boxShadow:"0 0 160px rgba(58,214,197,.35)",duration:.3},0.55);
+for(let i=0;i<6;i++)tl.to("#h_phone",{x:(i%2?-10:10),duration:.05,ease:"none"},0.6+i*.05);
+tl.to("#h_phone",{x:0,duration:.05},0.9);
+for(let i=0;i<6;i++)tl.to("#h_phone",{x:(i%2?-10:10),duration:.05,ease:"none"},1.9+i*.05);
+tl.to("#h_phone",{x:0,duration:.05},2.2);
+tl.fromTo("#h_phone",{scale:1},{scale:1.04,duration:4.6,ease:"none"},0.3);
+IN("#h_q",3.25);
+
+// ---- 1 Links
+fadeClip("c1",4.9,14.5);
+SET("#lglow,#lbulb,#lpglow",{opacity:0},4.9);SET("#lbulb",{opacity:.12},4.9);
+SET("#lfig",{opacity:0,y:120},4.9);SET("#lscr",{opacity:.9},4.9);
+LT.forEach((t,i)=>SET(`#lc${i}`,{opacity:i==0?1:0},4.9));
+SET("#l_b2,#l_b3,#l_cap",{opacity:0},4.9);
+tl.fromTo("#l_shop",{scale:1},{scale:1.05,transformOrigin:"50% 60%",duration:9.6,ease:"none"},4.9);
+IN("#c1 .lab",5.0);
+POP("#l_b1",5.35);IN("#l_m1",5.6);
+// Feierabend: Schild leuchtet kurz
+tl.fromTo("#lsign rect",{stroke:"#55555c"},{stroke:"#bdbdc4",duration:.25,yoyo:true,repeat:1},6.2);
+// Handy blinkt ungelesen
+tl.to("#lscr",{opacity:.25,duration:.3,yoyo:true,repeat:3},6.6);
+// Zeitraffer 21:30 -> 08:00
+LT.forEach((t,i)=>{if(i>0){SET(`#lc${i-1}`,{opacity:0},8.0+i*.2);SET(`#lc${i}`,{opacity:1},8.0+i*.2);}});
+tl.to("#lsky",{fill:"#7f98bb",duration:1.8,ease:"power1.in"},8.0);
+tl.to("#lmoon",{opacity:0,y:40,duration:1.2},8.0);
+// 08:00: Licht an, Figur kommt
+tl.to("#lglow",{opacity:1,duration:.5},10.1);tl.to("#lbulb",{opacity:1,duration:.3},10.1);
+tl.to("#lsign",{opacity:0,duration:.3},10.1);
+tl.to("#lfig",{opacity:1,y:0,duration:.5,ease:"power3.out"},10.15);
+SET("#l_m1",{opacity:.5},10.1);
+POP("#l_b2",10.6,"right bottom");
+POP("#l_b3",12.3);
+tl.to("#lfig",{y:16,duration:.5,ease:"power2.out"},12.7);
+tl.fromTo("#l_cap",{opacity:0,scale:1.2},{opacity:1,scale:1,duration:.35,ease:"power3.out"},12.9);
+
+// ---- 2 Rechts
+fadeClip("c2",14.5,23.8);
+SET("#rglow",{opacity:0},14.5);SET("#rbulb",{opacity:.12},14.5);SET("#rfig",{opacity:0},14.5);
+SET("#rscr",{opacity:.9},14.5);SET("#rpglow",{opacity:0},14.5);
+RT.forEach(i=>SET(`#rc${i}`,{opacity:0},14.5));
+SET("#r_b2,#r_b3,#r_b4,#r_cap",{opacity:0},14.5);
+tl.fromTo("#r_shop",{scale:1},{scale:1.05,transformOrigin:"50% 60%",duration:9.3,ease:"none"},14.5);
+IN("#c2 .lab",14.6);
+POP("#r_b1",15.35);
+tl.fromTo("#r_clock",{scale:1},{scale:1.12,duration:.2,yoyo:true,repeat:1,ease:"power2.out"},16.6);
+// 10 Sekunden zählen
+RT.forEach(i=>{SET(`#rc${i}`,{opacity:1},17.9+i*.11);if(i>0)SET(`#rc${i-1}`,{opacity:0},17.9+i*.11);});
+tl.to("#rpglow",{opacity:1,duration:.3},19.0);tl.to("#rscr",{fill:"#3ad6c5",duration:.3},19.0);
+POP("#r_b2",19.1,"right bottom");
+POP("#r_b3",20.3,"right bottom");
+POP("#r_b4",21.9);
+tl.fromTo("#r_cap",{opacity:0,scale:1.2},{opacity:1,scale:1,duration:.35,ease:"power3.out"},22.3);
+tl.to("#rpglow",{opacity:.5,duration:.4,yoyo:true,repeat:2},22.3);
+
+// ---- 3 Vergleich
+fadeClip("c3",23.8,28.1);
+SET("#vlglow",{opacity:1},23.8);SET("#vlsign",{opacity:0},23.8);SET("#vlsky",{fill:"#7f98bb"},23.8);SET("#vlmoon",{opacity:0},23.8);
+SET("#vlfig",{y:16},23.8);SET("#vlscr",{opacity:.6},23.8);SET("#vlpglow",{opacity:0},23.8);
+SET("#vrglow",{opacity:0},23.8);SET("#vrbulb",{opacity:.12},23.8);SET("#vrfig",{opacity:0},23.8);SET("#vrscr",{fill:"#3ad6c5"},23.8);SET("#vrpglow",{opacity:1},23.8);
+IN("#v_h",23.85);
+tl.fromTo("#v_l",{opacity:0,x:-60},{opacity:1,x:0,duration:.5,ease:"power3.out"},24.1);
+tl.fromTo("#v_r",{opacity:0,x:60},{opacity:1,x:0,duration:.5,ease:"power3.out"},24.2);
+IN("#v_lt",24.6);IN("#v_rt",24.75);
+tl.to("#v_l",{opacity:.35,duration:.5},26.3);tl.to("#v_lt",{opacity:.35,duration:.5},26.3);
+IN("#v_sub",26.4);
+
+// ---- 4 Läuft von allein
+fadeClip("c4",28.1,31.7);
+SET("#eglow",{opacity:0},28.1);SET("#ebulb",{opacity:.12},28.1);SET("#efig",{opacity:0},28.1);
+SET("#escr",{fill:"#3ad6c5"},28.1);SET("#epglow",{opacity:.4},28.1);SET("#e_t2",{opacity:0},28.1);
+EC.forEach((t,i)=>SET(`#ec${i}`,{opacity:0},28.1));
+tl.fromTo("#e_shop",{scale:1},{scale:1.06,transformOrigin:"50% 60%",duration:3.6,ease:"none"},28.1);
+IN("#e_t1",28.15);
+[28.9,29.8,30.7].forEach((t,i)=>{tl.fromTo("#epglow",{opacity:.4},{opacity:1,duration:.2,yoyo:true,repeat:1},t);SET(`#ec${i}`,{opacity:1},t);if(i>0)SET(`#ec${i-1}`,{opacity:0},t);});
+IN("#e_t2",30.1);
+
+// ---- 5 Frage
+fadeClip("c5",31.7,34.25);
+IN("#q_t",31.75,.5);
+
+window.__timelines=window.__timelines||{};window.__timelines["main"]=tl;tl.seek(0);
+</script></body></html>
