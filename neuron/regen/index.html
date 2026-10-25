@@ -1,0 +1,175 @@
+<!doctype html><html lang="de"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080, height=1920"/>
+<script src="assets/gsap.min.js"></script>
+<script type="importmap">{"imports":{"three":"./assets/three.module.min.js"}}</script>
+<style>
+@font-face{font-family:MO;src:url(assets/JetBrainsMono-Medium.ttf) format("truetype")}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0d0f18}
+#root{width:1080px;height:1920px;position:relative;overflow:hidden;background:#0d0f18}
+#gl{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.t{position:absolute;left:0;right:0;text-align:center;font-family:MO,monospace;letter-spacing:.26em;text-transform:uppercase;color:#ececf0;font-size:34px}
+</style></head><body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="12" data-width="1080" data-height="1920">
+  <canvas id="gl" width="720" height="1280"></canvas>
+  <div class="t" id="t1" style="top:250px">Gleicher Regen.</div>
+  <div class="t" id="t2" style="top:302px">Anderer Tag.</div>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { Reflector } from "./assets/Reflector.js";
+window.THREE = THREE;
+
+// fester Zufall, damit jedes Rendern gleich aussieht
+let seed = 7;
+const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("gl"), antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(720, 1280, false);
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+// Himmel: regnerische Nacht, unten etwas Stadtlicht
+const sky = document.createElement("canvas"); sky.width = 4; sky.height = 512;
+const sg = sky.getContext("2d"), gr = sg.createLinearGradient(0, 0, 0, 512);
+gr.addColorStop(0, "#07080e"); gr.addColorStop(0.45, "#141826"); gr.addColorStop(0.72, "#2b2a3c"); gr.addColorStop(1, "#3d3444");
+sg.fillStyle = gr; sg.fillRect(0, 0, 4, 512);
+const skyTex = new THREE.CanvasTexture(sky); skyTex.colorSpace = THREE.SRGBColorSpace;
+scene.background = skyTex;
+scene.fog = new THREE.Fog(0x1a1a28, 14, 60);
+const cam = new THREE.PerspectiveCamera(32, 720 / 1280, 0.1, 80);
+
+// Skyline mit Fenstern
+function windows(w, h) {
+  const c = document.createElement("canvas"); c.width = w * 8; c.height = h * 8; const g = c.getContext("2d");
+  g.fillStyle = "#000"; g.fillRect(0, 0, c.width, c.height);
+  for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++) {
+    if (rnd() < 0.09) { g.fillStyle = rnd() < 0.8 ? "#ffcf8f" : "#cfe3ff"; g.globalAlpha = 0.4 + rnd() * 0.6; g.fillRect(x * 8 + 2, y * 8 + 2, 4, 5); }
+  }
+  const tx = new THREE.CanvasTexture(c); tx.colorSpace = THREE.SRGBColorSpace; tx.magFilter = THREE.NearestFilter; return tx;
+}
+for (let i = 0; i < 18; i++) {
+  const w = 2.2 + rnd() * 3, h = 3 + rnd() * 8, x = -14 + i * 3.2 + rnd() * 1.2, z = -26 - rnd() * 8;
+  const m = new THREE.MeshStandardMaterial({ color: 0x0c0d13, roughness: 1, emissive: 0xffffff, emissiveIntensity: 0.55, emissiveMap: windows(Math.round(w * 5), Math.round(h * 5)) });
+  const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, 1.5), m); b.position.set(x, h / 2, z); scene.add(b);
+}
+
+// nasse Straße: deutliche Spiegelung
+const mirror = new Reflector(new THREE.PlaneGeometry(80, 40), { textureWidth: 360, textureHeight: 640, color: 0x8a8a96 });
+mirror.rotation.x = -Math.PI / 2; mirror.position.z = -4; scene.add(mirror);
+const road = new THREE.Mesh(new THREE.PlaneGeometry(80, 40), new THREE.MeshStandardMaterial({ color: 0x101119, roughness: 0.35, transparent: true, opacity: 0.62 }));
+road.rotation.x = -Math.PI / 2; road.position.set(0, 0.003, -4); road.receiveShadow = true; scene.add(road);
+// Bordstein
+const curb = new THREE.Mesh(new THREE.BoxGeometry(80, 0.12, 0.25), new THREE.MeshStandardMaterial({ color: 0x24242c, roughness: 0.8 }));
+curb.position.set(0, 0.06, -2.2); scene.add(curb);
+
+// Laternen
+scene.add(new THREE.HemisphereLight(0x8a93b0, 0x0a0a10, 0.42));
+const moon = new THREE.DirectionalLight(0xd2d8e8, 1.5); moon.position.set(-3, 5, 10); scene.add(moon, moon.target);
+const poleMat = new THREE.MeshStandardMaterial({ color: 0x1b1b21, roughness: 0.6 });
+const lamps = [];
+[1.6, 7.6, 13.6].forEach((x, i) => {
+  const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.07, 4.2), poleMat); pole.position.set(x, 2.1, -1.9); scene.add(pole);
+  const arm = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.05, 0.05), poleMat); arm.position.set(x + 0.3, 4.15, -1.9); scene.add(arm);
+  const head = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.08, 0.2), new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xffd39a, emissiveIntensity: 4 }));
+  head.position.set(x + 0.6, 4.08, -1.9); scene.add(head);
+  const sp = new THREE.SpotLight(0xffcf93, 85, 11, 0.62, 0.8, 1.4);
+  sp.position.set(x + 0.6, 4.0, -1.9); sp.target.position.set(x + 0.6, 0, 0.4);
+  if (i < 2) { sp.castShadow = true; sp.shadow.mapSize.set(512, 512); sp.shadow.radius = 4; sp.shadow.bias = -0.0008; }
+  scene.add(sp, sp.target); lamps.push(sp);
+});
+
+// Figuren
+function figure(color) {
+  const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.42 });
+  const cap = (r, l) => { const m = new THREE.Mesh(new THREE.CapsuleGeometry(r, l, 8, 16), mat); m.castShadow = true; return m; };
+  const g = new THREE.Group(); scene.add(g);
+  const body = new THREE.Group(); body.position.y = 0.93; g.add(body); // Hüfte
+  const torso = cap(0.21, 0.36); torso.position.y = 0.29; body.add(torso);
+  const neck = new THREE.Group(); neck.position.y = 0.71; body.add(neck);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.25, 32, 24), mat); head.castShadow = true; head.position.y = 0.2; neck.add(head);
+  const limb = (parent, x, y, r, l1, l2) => {
+    const a = new THREE.Group(); a.position.set(x, y, 0); parent.add(a);
+    const u = cap(r, l1); u.position.y = -(l1 / 2 + r * 0.55); a.add(u);
+    const b = new THREE.Group(); b.position.y = -(l1 + r * 1.1); a.add(b);
+    const lo = cap(r * 0.94, l2); lo.position.y = -(l2 / 2 + r * 0.55); b.add(lo);
+    return { a, b };
+  };
+  return { g, body, torso, neck,
+    lL: limb(g, 0.11, 0.93, 0.09, 0.3, 0.3), lR: limb(g, -0.11, 0.93, 0.09, 0.3, 0.3),
+    aL: limb(body, 0.28, 0.54, 0.066, 0.22, 0.22), aR: limb(body, -0.28, 0.54, 0.066, 0.22, 0.22) };
+}
+const A = figure(0x9c9ca4); // ohne Schirm, grau, gebeugt
+const B = figure(0xf4f4f4); // mit Schirm, aufrecht
+A.g.rotation.y = B.g.rotation.y = Math.PI / 2;
+const ZA = 0.55, ZB = -0.55;
+
+// Schirm an B (in Körperkoordinaten, Blick +z)
+const um = new THREE.Group(); B.body.add(um); um.position.set(-0.3, 1.45, 0.12);
+const canopy = new THREE.Mesh(new THREE.SphereGeometry(0.72, 32, 12, 0, Math.PI * 2, 0, Math.PI / 2.3), new THREE.MeshStandardMaterial({ color: 0x17171c, roughness: 0.3, side: THREE.DoubleSide }));
+canopy.scale.y = 0.42; canopy.castShadow = true; um.add(canopy);
+const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 1.0), new THREE.MeshStandardMaterial({ color: 0x2a2a30 }));
+shaft.position.y = -0.48; um.add(shaft);
+// rechter Arm hält den Schirm
+B.aR.a.rotation.set(-1.15, 0, -0.2); B.aR.b.rotation.x = -1.2;
+
+// Regen
+const ND = 1400, RW = 9, RH = 7.5, RZ0 = -3.5, RZ1 = 3.5;
+const d0 = []; for (let i = 0; i < ND; i++) d0.push([rnd() * RW, rnd() * RH, RZ0 + rnd() * (RZ1 - RZ0), 0.9 + rnd() * 0.3]);
+const rg = new THREE.BufferGeometry(); const rp = new Float32Array(ND * 6); rg.setAttribute("position", new THREE.BufferAttribute(rp, 3));
+const rain = new THREE.LineSegments(rg, new THREE.LineBasicMaterial({ color: 0xaab3c8, transparent: true, opacity: 0.38 }));
+rain.frustumCulled = false; scene.add(rain);
+// Tropfen auf A (kleine Spritzer am Kopf)
+const mod = (a, n) => ((a % n) + n) % n;
+const cl = (x) => Math.min(Math.max(x, 0), 1);
+const smooth = (a, b, x) => { const t = cl((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+
+function walk(f, ph, amp, knee, arm, w) {
+  f.lL.a.rotation.x = Math.sin(ph) * amp * w; f.lR.a.rotation.x = -Math.sin(ph) * amp * w;
+  f.lL.b.rotation.x = Math.max(0, Math.sin(ph - 1.2)) * knee * w; f.lR.b.rotation.x = Math.max(0, -Math.sin(ph - 1.2)) * knee * w;
+  if (arm !== null) { f.aL.a.rotation.x = -Math.sin(ph) * arm * w; f.aL.b.rotation.x = -0.25; }
+  return Math.abs(Math.cos(ph)) * 0.03 * w;
+}
+
+function render(t) {
+  // B zügig und aufrecht, A langsamer und gebeugt
+  const xB = -0.15 + 0.95 * t, xA = -0.95 + 0.84 * t;
+  const phB = (xB + 0.15) * 4.6, phA = (xA + 0.95) * 5.4;
+  B.g.position.set(xB, walk(B, phB, 0.5, 0.75, 0.38, 1), ZB);
+  A.g.position.set(xA, walk(A, phA, 0.32, 0.5, null, 1) * 0.6, ZA);
+  A.body.rotation.x = 0.24; A.neck.rotation.x = 0.32;
+  A.aL.a.rotation.x = 0.35 + Math.sin(phA) * 0.08; A.aR.a.rotation.x = 0.35 - Math.sin(phA) * 0.08;
+  A.aL.b.rotation.x = A.aR.b.rotation.x = 0;
+  B.body.rotation.x = -0.02; B.neck.rotation.x = -0.05;
+  um.rotation.z = 0.06 * Math.sin(phB); // Schirm wippt leicht
+
+  // Kamera folgt beiden
+  const cx = (xA + xB) / 2 + 0.15;
+  cam.position.set(cx, 2.1, 11.2); cam.lookAt(cx, 2.15, 0); moon.target.position.set(cx, 1, 0);
+
+  // Regen fällt, unter dem Schirm bleibt es trocken
+  const ux = xB + 0.12, uz = ZB + 0.3, uy = 2.45;
+  for (let i = 0; i < ND; i++) {
+    const d = d0[i];
+    const x = cx - RW / 2 + mod(d[0] - cx + RW / 2, RW);
+    let y = mod(d[1] - 8.5 * d[3] * t, RH) - 0.2;
+    const z = d[2];
+    if (Math.abs(x - ux) < 0.62 && Math.abs(z - uz) < 0.62 && y < uy) y = -50;
+    const j = i * 6;
+    rp[j] = x; rp[j + 1] = y; rp[j + 2] = z; rp[j + 3] = x - 0.03; rp[j + 4] = y + 0.26; rp[j + 5] = z;
+  }
+  rg.attributes.position.needsUpdate = true;
+  renderer.render(scene, cam);
+}
+window.addEventListener("hf-seek", (ev) => render(ev.detail.time));
+
+const tl = gsap.timeline({ paused: true });
+tl.set("#t1,#t2", { opacity: 0 }, 0);
+tl.fromTo("#t1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 0.4);
+tl.fromTo("#t2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 1.6);
+tl.to({}, { duration: 0.01 }, 11.99);
+tl.eventCallback("onUpdate", () => render(tl.time()));
+window.__timelines = window.__timelines || {}; window.__timelines["main"] = tl;
+render(0);
+</script></body></html>
