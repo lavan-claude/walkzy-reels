@@ -14,13 +14,13 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0b0d}
 .lab.ac{color:#3ad6c5}
 .clock{position:absolute;left:0;right:0;top:250px;text-align:center;font-family:SG,sans-serif;font-size:150px;line-height:1;letter-spacing:-.02em}
 .clock span{position:absolute;left:0;right:0}
-.shop{position:absolute;left:150px;top:860px;width:780px;height:1170px}
-.chat{position:absolute;left:90px;right:90px;top:470px;display:flex;flex-direction:column;gap:22px}
-.b{max-width:760px;padding:26px 36px;border-radius:38px;font-size:44px;line-height:1.2;font-weight:600}
+.shop{position:absolute;left:150px;top:930px;width:780px;height:1170px}
+.chat{position:absolute;left:90px;right:90px;top:500px;display:flex;flex-direction:column;gap:16px}
+.b{max-width:760px;padding:26px 36px;border-radius:38px;font-size:42px;line-height:1.2;font-weight:600}
 .b.k{align-self:flex-start;background:#26262b;color:#ececf0;border-bottom-left-radius:10px}
 .b.s{align-self:flex-end;background:#f2f2f2;color:#111;border-bottom-right-radius:10px}
 .b.t{align-self:flex-end;background:#3ad6c5;color:#03201c;border-bottom-right-radius:10px}
-.meta{font-size:26px;color:#77777f;margin-top:-10px}
+.meta{font-size:26px;color:#8c8c94;margin-top:-10px}
 .meta.r{align-self:flex-end}
 .cap{position:absolute;left:0;right:0;text-align:center;font-size:58px}
 </style></head><body>
@@ -50,7 +50,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0b0d}
     <div class="b s" id="l_b2">Guten Morgen! Ja, um 10 Uhr?</div>
     <div class="b k" id="l_b3">Danke, hab schon woanders gebucht.</div>
   </div>
-  <div class="cap mono" id="l_cap" style="top:1180px;color:#ff7a6b;font-size:64px">Zu spät.</div>
+  <div class="cap mono" id="l_cap" style="top:418px;color:#ff7a6b;font-size:40px">Zu spät.</div>
 </div></div>
 
 <!-- 2: Rechts, hat es automatisiert -->
@@ -65,7 +65,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0b0d}
     <div class="b t" id="r_b3" style="background:#0f3c37;color:#3ad6c5;border:3px solid #3ad6c5">Jetzt buchen ›</div>
     <div class="b k" id="r_b4">Gebucht ✓ Danke!</div>
   </div>
-  <div class="cap mono" id="r_cap" style="top:1180px;color:#3ad6c5;font-size:64px">Gebucht.</div>
+  <div class="cap mono" id="r_cap" style="top:418px;color:#3ad6c5;font-size:40px">Gebucht.</div>
 </div></div>
 
 <!-- 3: Vergleich -->
@@ -187,7 +187,7 @@ SET("#l_m1",{opacity:.5},10.1);
 POP("#l_b2",10.6,"right bottom");
 POP("#l_b3",12.3);
 tl.to("#lfig",{y:16,duration:.5,ease:"power2.out"},12.7);
-tl.fromTo("#l_cap",{opacity:0,scale:1.2},{opacity:1,scale:1,duration:.35,ease:"power3.out"},12.9);
+tl.to("#l_clock",{color:"#ff7a6b",duration:.3},12.9);tl.fromTo("#l_cap",{opacity:0,scale:1.2},{opacity:1,scale:1,duration:.35,ease:"power3.out"},12.9);
 
 // ---- 2 Rechts
 fadeClip("c2",14.5,23.8);
@@ -205,7 +205,7 @@ tl.to("#rpglow",{opacity:1,duration:.3},19.0);tl.to("#rscr",{fill:"#3ad6c5",dura
 POP("#r_b2",19.1,"right bottom");
 POP("#r_b3",20.3,"right bottom");
 POP("#r_b4",21.9);
-tl.fromTo("#r_cap",{opacity:0,scale:1.2},{opacity:1,scale:1,duration:.35,ease:"power3.out"},22.3);
+tl.to("#r_clock",{color:"#3ad6c5",duration:.3},22.3);tl.fromTo("#r_cap",{opacity:0,scale:1.2},{opacity:1,scale:1,duration:.35,ease:"power3.out"},22.3);
 tl.to("#rpglow",{opacity:.5,duration:.4,yoyo:true,repeat:2},22.3);
 
 // ---- 3 Vergleich
